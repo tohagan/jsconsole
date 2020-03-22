@@ -52,6 +52,7 @@
     "body-parser": "^1.17.2",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
+    "cross-env": "^7.0.2",
     "css-loader": "0.28.4",
     "dotenv": "4.0.0",
     "eslint-config-prettier": "^2.9.0",
@@ -100,7 +101,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "styles": "cat src/*.css > src/core/jsconsole.css",
     "watch": "nodemon -w src/ -e css -x 'npm run styles'",
-    "lib": "rm -rf dist; npm run styles; NODE_ENV=production babel src/core --out-dir dist --copy-files --ignore '__tests__'",
+    "lib": "rm -rf dist && npm run styles && cross-env NODE_ENV=production babel src/core --out-dir dist --copy-files --ignore '__tests__'",
     "deploy": "npm run build && s3_website push",
     "prepare": "npm run lib"
   },
